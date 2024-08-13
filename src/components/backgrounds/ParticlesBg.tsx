@@ -23,17 +23,23 @@ export default function ParticleBg () {
             
         }
 
-        update() {
+        update(canvasRef) {
             this.x += this.speedX
             this.y += this.speedY
-            if (this.size > 0.2) this.size -= 0.1;
+            if (this.size > 0.2)  {
+              this.size -= 0.05
+            } else {
+              this.size = Math.random() * 5 + 1
+              this.x = Math.random() * canvasRef.current.width
+              this.y = Math.random() * canvasRef.current.height
+            }
             
         }
 
         draw(ctx) {
             ctx.beginPath()
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-            ctx.fillStyle = `rgba(255, 255, 255)`
+            ctx.fillStyle = `rgba(255, 255, 255, 0.8)`
             ctx.closePath()
             ctx.fill()
 
@@ -64,16 +70,16 @@ export default function ParticleBg () {
             }
           };
       
-          const animateParticles = () => {
-            ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      
-            particlesArray.forEach((particle) => {
-              particle.update();
-              particle.draw(ctx);
-            });
-      
-            requestAnimationFrame(animateParticles);
-          };
+        const animateParticles = (canvasRef) => {
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    
+          particlesArray.forEach((particle) => {
+            particle.update(canvasRef);
+            particle.draw(ctx);
+          });
+    
+          requestAnimationFrame(animateParticles);
+        };
 
           const handleResize = () => {
             canvas.width = window.innerWidth
@@ -81,8 +87,9 @@ export default function ParticleBg () {
           }
           
           window.addEventListener('resize', handleResize);
+          handleResize()
           createParticles();
-          animateParticles();
+          animateParticles(canvas);
       
           return () => {
             window.removeEventListener('resize', resizeCanvas);
