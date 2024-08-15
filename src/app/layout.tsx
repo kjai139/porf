@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.variable)}>
+    <html lang="en"  suppressHydrationWarning>
+      <body className={cn("min-h-screen bg-background text-foreground font-sans antialiased", inter.variable)}>
         <ThemeProvider attribute="class" defaultTheme="dTheme" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

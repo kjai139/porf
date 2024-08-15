@@ -3,7 +3,7 @@
 
 export default function TopNav () {
     return (
-        <nav className="flex w-full justify-between p-4 shadow text-foreground">
+        <nav className="flex w-full justify-between p-4 shadow text-foreground bg-navBg">
             <div>
                 ACME
             </div>

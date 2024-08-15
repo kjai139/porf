@@ -33,13 +33,14 @@
   }
 
   .dTheme {
-    --background: 20 14.3% 4.1%;
+    --background: #1a1a1a;
+    --navBg: #282828;
     --foreground: 60 9.1% 97.8%;
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
-    --primary: 60 9.1% 97.8%;
+    --primary: 346.8 77.2% 49.8%;
     --primary-foreground: 24 9.8% 10%;
     --secondary: 12 6.5% 15.1%;
     --secondary-foreground: 60 9.1% 97.8%;
@@ -58,4 +59,23 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+
+@keyframes swift-up {
+  to {
+    transform: translateY(0);
+  }
+}
+
+.al {
+  display: inline-block;
+  overflow: hidden;
+  animation: .3s swift-up ease-in-out forwards;
+}
+
+.al i {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: .5s swift-up ease-in-out forwards;
 }
