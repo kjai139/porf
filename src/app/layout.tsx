@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/components/providers/providers";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -21,10 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"  suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background text-foreground font-sans antialiased", inter.variable)}>
-        <ThemeProvider attribute="class" defaultTheme="dTheme" enableSystem disableTransitionOnChange>
+      <body className={cn("min-h-screen bg-background text-foreground antialiased font-sans", inter.variable)}>
+        <Providers>
           {children}
-        </ThemeProvider>
+        </Providers>
         
         </body>
     </html>

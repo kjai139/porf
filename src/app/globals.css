@@ -79,3 +79,13 @@
   transform: translateY(100%);
   animation: .5s swift-up ease-in-out forwards;
 }
+
+.gc div {
+  display: flex;
+  flex-direction: column;
+  gap:4px;
+  border: 2px solid;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
