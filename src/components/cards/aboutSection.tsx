@@ -13,7 +13,7 @@ export default function AboutSection () {
 
     return (
         <div className="h-screen w-full flex px-20 py-20">
-            <div className="flex gap-4">
+            <div className="flex gap-8">
             
             <div className="flex flex-col flex-1">
                 <div className="flex p-2">
@@ -22,7 +22,7 @@ export default function AboutSection () {
                         About me
                     </h2>
                 </div>
-                <div>
+                <div className="text-lg">
                     <p>
                     I am a passionate and driven web developer with a strong focus on JavaScript. Over the past few years, I've honed my skills in creating dynamic and responsive web applications, leveraging frameworks like React.js and Next.js to deliver high-quality, user-friendly experiences.
                     </p>
@@ -32,7 +32,7 @@ export default function AboutSection () {
 
             <div className="flex-1">
                 <div className="grid grid-cols-3 gap-4 gc">
-                    <div>
+                <div>
                 <IoLogoJavascript size={iconSizes}></IoLogoJavascript>
                 <span>JavaScript</span>
                 </div>
