@@ -12,13 +12,13 @@ export default function AboutSection () {
     const iconSizes = 40
 
     return (
-        <div className="h-screen w-full flex px-20 py-20">
+        <div className="min-h-screen w-full flex mw">
             <div className="flex gap-8">
             
             <div className="flex flex-col flex-1">
                 <div className="flex p-2">
                     <FaUser size={40}></FaUser>
-                    <h2 className="ml-2 text-2xl flex items-end border-b-2">
+                    <h2 className="ml-2 flex items-end border-b-2">
                         About me
                     </h2>
                 </div>
