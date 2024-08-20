@@ -6,6 +6,8 @@ import { z } from "zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
+import { Textarea } from "../ui/textarea"
+import { sendEmail } from "@/app/actions"
 
 
 const formSchema = z.object({
@@ -17,7 +19,9 @@ const formSchema = z.object({
     senderEmail: z.string().email({
         message: 'Invalid Email address'
     }),
-    senderMessage: z.string().min(1).max(1000, {
+    senderMessage: z.string().min(1, {
+        message: 'Write something!'
+    }).max(1000, {
         message: 'Max message length is 1000 characters'
     })
 })
@@ -35,7 +39,7 @@ export function MailerForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form className="min-w-[500px] flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded" onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                 control={form.control}
                 name="senderName"
@@ -45,11 +49,49 @@ export function MailerForm() {
                             Name
                         </FormLabel>
                         <FormControl>
-                            <Input placeholder="Name" {...field}></Input>
+                            <Input placeholder="Enter your name here..." {...field}></Input>
                         </FormControl>
-                        <FormDescription>
+                        {/* <FormDescription>
                             Your name
-                        </FormDescription>
+                        </FormDescription> */}
+                        <FormMessage></FormMessage>
+
+                    </FormItem>
+                )}
+                >
+
+                </FormField>
+               
+                <FormField
+                control={form.control}
+                name="senderEmail"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>
+                            Email
+                        </FormLabel>
+                        <FormControl>
+                            <Input type="email" placeholder="Enter your email here..." {...field}></Input>
+                        </FormControl>
+                        
+                        <FormMessage></FormMessage>
+
+                    </FormItem>
+                )}
+                >
+
+                </FormField>
+                <FormField
+                control={form.control}
+                name="senderMessage"
+                render={({ field }) => (
+                    <FormItem>
+                        <FormLabel>
+                            Message
+                        </FormLabel>
+                        <FormControl>
+                            <Textarea maxLength={1000} className="resize-none" placeholder="Leave a message here..." {...field}></Textarea>
+                        </FormControl>
                         <FormMessage></FormMessage>
 
                     </FormItem>
@@ -65,4 +107,5 @@ export function MailerForm() {
 
 function onSubmit(values:z.infer<typeof formSchema>) {
     console.log(values)
+    const result = sendEmail(values)
 }

@@ -15,7 +15,7 @@ export default function AboutSection () {
         <div className="min-h-screen w-full flex mw">
             <div className="flex gap-8">
             
-            <div className="flex flex-col flex-1">
+            <div className="flex flex-col flex-1 gap-6">
                 <div className="flex p-2">
                     <FaUser size={40}></FaUser>
                     <h2 className="ml-2 flex items-end border-b-2">

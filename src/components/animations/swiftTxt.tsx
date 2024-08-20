@@ -3,16 +3,17 @@
 import { useEffect, useRef, useState } from "react"
 
 interface SwiftTextProps {
-    text:string,
-    size:string,
-    baseDelay:number
+    txt : {
+        msg:string,
+        size?:string,
+    }[]
 }
 
-export default function SwiftText({text, size, baseDelay}:SwiftTextProps) {
+export default function SwiftText({txt}:SwiftTextProps) {
 
     const [animatedWords, setAnimatedWords] = useState<any[]>([])
 
-    useEffect(() => {
+    /* useEffect(() => {
         const words = text.split(" ").map((word, idx) => {
             return (
                 <span className={`al ${word === 'Simon' ? 'text-primary' : ''}`} key={`${idx}`}>
@@ -25,10 +26,10 @@ export default function SwiftText({text, size, baseDelay}:SwiftTextProps) {
         })
 
         setAnimatedWords(words)
-    }, [])
+    }, []) */
 
     return (
-        <div className={`${size ? size : undefined}`}>
+        <div>
             {animatedWords}
         </div>
     )
