@@ -5,17 +5,20 @@ import { IoLogoJavascript } from "react-icons/io5";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiAmazons3, SiExpress, SiTypescript } from "react-icons/si";
 import { TbBrandMongodb } from "react-icons/tb";
+import WithAnimation from "../animations/withAnimation";
 
 
 
 export default function AboutSection () {
     const iconSizes = 40
+  
 
     return (
         <div className="min-h-screen w-full flex mw">
             <div className="flex gap-8">
             
-            <div className="flex flex-col flex-1 gap-6">
+            <WithAnimation classnames={`flex flex-col flex-1 gap-6`} animationName={'active'}>
+                <div className="flex flex-col flex-1 gap-6 l-slide">
                 <div className="flex p-2">
                     <FaUser size={40}></FaUser>
                     <h2 className="ml-2 flex items-end border-b-2">
@@ -27,10 +30,11 @@ export default function AboutSection () {
                     I am a passionate and driven web developer with a strong focus on JavaScript. Over the past few years, I've honed my skills in creating dynamic and responsive web applications, leveraging frameworks like React.js and Next.js to deliver high-quality, user-friendly experiences.
                     </p>
                 </div>
-                
-            </div>
-
-            <div className="flex-1">
+                </div>
+            
+            </WithAnimation>
+            <WithAnimation classnames={`flex-1 r-slide`} animationName={'active'}>
+            
                 <div className="grid grid-cols-3 gap-4 gc">
                 <div>
                 <IoLogoJavascript size={iconSizes}></IoLogoJavascript>
@@ -78,8 +82,10 @@ export default function AboutSection () {
                 </div>
                 </div>
 
+            
+            </WithAnimation>
             </div>
-            </div>
+            
         </div>
     )
 }

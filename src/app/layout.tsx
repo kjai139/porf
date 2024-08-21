@@ -20,7 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en"  suppressHydrationWarning>
+    <>
+    <html lang="en" className="dTheme"  suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background text-foreground antialiased font-sans", inter.variable)}>
         <Providers>
           {children}
@@ -28,5 +29,6 @@ export default function RootLayout({
         
         </body>
     </html>
+  </>
   );
 }

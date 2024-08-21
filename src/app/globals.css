@@ -74,7 +74,7 @@
   animation: .3s swift-up ease-in-out forwards;
 }
 
-.al i {
+.al div {
   display: inline-block;
   transform: translateY(100%);
   animation: .5s swift-up ease-in-out forwards;
@@ -118,4 +118,46 @@ main {
 h2 {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.l-slide.active {
+  opacity: 0;
+  animation: slideFromLeft 1s ease-out forwards;
+}
+
+.l-slide {
+  opacity: 0;
+}
+
+.r-slide.active {
+  opacity: 0;
+  animation: slideFromRight 1s ease-out forwards;
+}
+
+.r-slide {
+  opacity: 0;
+}
+
+
+
+@keyframes slideFromLeft {
+  0% {
+    transform:translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform:translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform:translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform:translateX(0);
+    opacity:1;
+  }
 }
