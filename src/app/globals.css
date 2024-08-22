@@ -138,6 +138,51 @@ h2 {
   opacity: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  article > img, .proj-t {
+    scale: .8;
+    opacity: 0;
+    animation:fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+  
+  }
+
+  .ah {
+    transform:translateX(-100%);
+    opacity: 0;
+    animation: slideFL linear forwards;
+    animation-timeline: view();
+    animation-range-start: entry;
+    animation-range-end: entry 400px;
+  }
+}
+
+
+.tilt-l {
+  transform:rotate(-20deg);
+  z-index: 10;
+}
+
+.shift-u {
+  transform: translateY(-30px);
+  z-index: 9;
+}
+
+@keyframes fade-in {
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes slideFL {
+  to {
+    transform:translateX(0);
+    opacity:1;
+  }
+}
+
 
 
 @keyframes slideFromLeft {

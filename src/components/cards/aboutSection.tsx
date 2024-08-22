@@ -14,7 +14,8 @@ export default function AboutSection () {
   
 
     return (
-        <div className="min-h-screen w-full flex mw">
+        <div className="min-h-[80vh] w-full flex mw">
+            <div>
             <div className="flex gap-8">
             
             <WithAnimation classnames={`flex flex-col flex-1 gap-6`} animationName={'active'}>
@@ -33,8 +34,8 @@ export default function AboutSection () {
                 </div>
             
             </WithAnimation>
-            <WithAnimation classnames={`flex-1 r-slide`} animationName={'active'}>
-            
+            <WithAnimation classnames={`flex-1`} animationName={'active'}>
+                <div className="r-slide flex-1">
                 <div className="grid grid-cols-3 gap-4 gc">
                 <div>
                 <IoLogoJavascript size={iconSizes}></IoLogoJavascript>
@@ -81,11 +82,12 @@ export default function AboutSection () {
                 <span>React</span>
                 </div>
                 </div>
+                </div>
 
             
             </WithAnimation>
             </div>
-            
+            </div>
         </div>
     )
 }
