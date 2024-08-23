@@ -8,6 +8,7 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { Textarea } from "../ui/textarea"
 import { sendEmail } from "@/app/actions"
+import { useEffect, useState } from "react"
 
 
 const formSchema = z.object({
@@ -37,6 +38,43 @@ export function MailerForm() {
         }
     })
 
+    const [serverErrorMsg, setServerErrorMsg] = useState('')
+    const [resultMsg, setResultMsg] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        if (form.formState.isSubmitSuccessful && !serverErrorMsg) {
+            form.reset()
+        }
+    }, [form.formState])
+
+    async function onSubmit(values:z.infer<typeof formSchema>) {
+        console.log(values)
+        setResultMsg('')
+        setServerErrorMsg('')
+        setIsLoading(true)
+        try {
+            const response = await sendEmail(values)
+            if (response === 'success') {
+                setIsLoading(false)
+                setResultMsg('Message sent.')
+            } else {
+                setIsLoading(false)
+                setServerErrorMsg('An unknown server error has occured.')
+            }
+        } catch (err:any) {
+            if (typeof err === 'string') {
+                setServerErrorMsg(err)
+            } else {
+                setServerErrorMsg('A server error has occured.')
+            } 
+            console.error(err)
+            setIsLoading(false)
+        }
+        /* const result = sendEmail(values)
+        console.log(result) */
+    }
+
     return (
         <Form {...form}>
             <form className="min-w-[500px] flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded" onSubmit={form.handleSubmit(onSubmit)}>
@@ -49,7 +87,7 @@ export function MailerForm() {
                             Name
                         </FormLabel>
                         <FormControl>
-                            <Input placeholder="Enter your name here..." {...field}></Input>
+                            <Input autoComplete="off" placeholder="Enter your name here..." {...field}></Input>
                         </FormControl>
                         {/* <FormDescription>
                             Your name
@@ -71,7 +109,7 @@ export function MailerForm() {
                             Email
                         </FormLabel>
                         <FormControl>
-                            <Input type="email" placeholder="Enter your email here..." {...field}></Input>
+                            <Input type="email" autoComplete="off" placeholder="Enter your email here..." {...field}></Input>
                         </FormControl>
                         
                         <FormMessage></FormMessage>
@@ -99,13 +137,23 @@ export function MailerForm() {
                 >
 
                 </FormField>
-                <Button type="submit">Submit</Button>
+                <Button disabled={isLoading} type="submit">{isLoading ? 'Sending...' : 'Submit'}</Button>
+                {serverErrorMsg || resultMsg ? 
+                <div className="text-center">
+                    
+                    <span className="text-destructive">
+                        {serverErrorMsg}
+                    </span> 
+                    
+                    <span className="text-success">
+                        {resultMsg}
+                    </span> 
+                </div> : null }
             </form>
         </Form>
     )
 }
 
-function onSubmit(values:z.infer<typeof formSchema>) {
-    console.log(values)
-    const result = sendEmail(values)
-}
+
+
+export type ContactFormType = z.infer<typeof formSchema>
