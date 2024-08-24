@@ -1,3 +1,4 @@
+import AboutBtn from "../buttons/aboutBtn"
 
 
 
@@ -8,9 +9,7 @@ export default function TopNav () {
                 
             </div>
             <div className="flex gap-4 text-xl">
-                <div>
-                    ABOUT
-                </div>
+                <AboutBtn></AboutBtn>
                 <div>
                     PROJECTS
                 </div>

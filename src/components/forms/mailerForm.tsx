@@ -41,15 +41,17 @@ export function MailerForm() {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     const [resultMsg, setResultMsg] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [wasSubmitSuccess, setWasSubmitSuccess] = useState(false)
 
     useEffect(() => {
-        if (form.formState.isSubmitSuccessful && !serverErrorMsg) {
+        if (wasSubmitSuccess) {
             form.reset()
         }
-    }, [form.formState])
+    }, [wasSubmitSuccess])
 
     async function onSubmit(values:z.infer<typeof formSchema>) {
         console.log(values)
+        setWasSubmitSuccess(false)
         setResultMsg('')
         setServerErrorMsg('')
         setIsLoading(true)
@@ -57,6 +59,7 @@ export function MailerForm() {
             const response = await sendEmail(values)
             if (response === 'success') {
                 setIsLoading(false)
+                setWasSubmitSuccess(true)
                 setResultMsg('Message sent.')
             } else {
                 setIsLoading(false)
@@ -65,6 +68,8 @@ export function MailerForm() {
         } catch (err:any) {
             if (typeof err === 'string') {
                 setServerErrorMsg(err)
+            } else if (err.message) {
+                setServerErrorMsg(err.message)
             } else {
                 setServerErrorMsg('A server error has occured.')
             } 
@@ -77,7 +82,7 @@ export function MailerForm() {
 
     return (
         <Form {...form}>
-            <form className="min-w-[500px] flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded" onSubmit={form.handleSubmit(onSubmit)}>
+            <form className={`sm:min-w-[500px] min-w-[300px] max-w-[500px] flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded`} onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                 control={form.control}
                 name="senderName"
@@ -87,7 +92,7 @@ export function MailerForm() {
                             Name
                         </FormLabel>
                         <FormControl>
-                            <Input autoComplete="off" placeholder="Enter your name here..." {...field}></Input>
+                            <Input disabled={isLoading} autoComplete="off" placeholder="Enter your name here..." {...field}></Input>
                         </FormControl>
                         {/* <FormDescription>
                             Your name
@@ -109,7 +114,7 @@ export function MailerForm() {
                             Email
                         </FormLabel>
                         <FormControl>
-                            <Input type="email" autoComplete="off" placeholder="Enter your email here..." {...field}></Input>
+                            <Input disabled={isLoading} type="email" autoComplete="off" placeholder="Enter your email here..." {...field}></Input>
                         </FormControl>
                         
                         <FormMessage></FormMessage>
@@ -128,7 +133,7 @@ export function MailerForm() {
                             Message
                         </FormLabel>
                         <FormControl>
-                            <Textarea maxLength={1000} className="resize-none" placeholder="Leave a message here..." {...field}></Textarea>
+                            <Textarea disabled={isLoading} maxLength={1000} className="resize-none" placeholder="Leave a message here..." {...field}></Textarea>
                         </FormControl>
                         <FormMessage></FormMessage>
 
@@ -137,7 +142,9 @@ export function MailerForm() {
                 >
 
                 </FormField>
-                <Button disabled={isLoading} type="submit">{isLoading ? 'Sending...' : 'Submit'}</Button>
+                <Button className={`text-foreground font-semibold`} disabled={isLoading} type="submit">{isLoading ? 
+                    <span className="load-ani">SENDING MESSAGE...</span> : 
+                    'Submit'}</Button>
                 {serverErrorMsg || resultMsg ? 
                 <div className="text-center">
                     

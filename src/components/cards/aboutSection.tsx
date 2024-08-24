@@ -6,6 +6,7 @@ import { RiNextjsFill } from "react-icons/ri";
 import { SiAmazons3, SiExpress, SiTypescript } from "react-icons/si";
 import { TbBrandMongodb } from "react-icons/tb";
 import WithAnimation from "../animations/withAnimation";
+import AboutRef from "../ref/aboutRef";
 
 
 
@@ -15,8 +16,9 @@ export default function AboutSection () {
 
     return (
         <div className="min-h-[80vh] w-full flex mw">
+            <AboutRef></AboutRef>
             <div>
-            <div className="flex gap-8">
+            <div className="flex gap-8 overflow-hidden">
             
             <WithAnimation classnames={`flex flex-col flex-1 gap-6`} animationName={'active'}>
                 <div className="flex flex-col flex-1 gap-6 l-slide">

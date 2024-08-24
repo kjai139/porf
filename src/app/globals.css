@@ -128,6 +128,7 @@ h2 {
 
 .l-slide {
   opacity: 0;
+  
 }
 
 .r-slide.active {
@@ -137,6 +138,23 @@ h2 {
 
 .r-slide {
   opacity: 0;
+  
+}
+
+.load-ani {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%{
+    opacity: 1;
+  }
+  50% {
+    opacity: .8;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
