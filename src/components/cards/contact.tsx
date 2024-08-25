@@ -5,7 +5,7 @@ export default function ContactSection() {
 
     return (
         <div className="min-h-screen w-full flex flex-col gap-20 mw">
-            <div className="flex justify-center flex-col items-center">
+            <div className="flex justify-center flex-col sm:items-center">
                 <div className="flex gap-4">
                 <MdContactMail size={40}></MdContactMail>
                 <h2 className="text-4xl underline mb-8">

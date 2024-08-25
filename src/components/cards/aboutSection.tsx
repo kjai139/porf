@@ -15,16 +15,16 @@ export default function AboutSection () {
   
 
     return (
-        <div className="min-h-[80vh] w-full flex mw">
+        <div className="w-full flex mw items-center justify-center min-h-[75vh]">
             <AboutRef></AboutRef>
             <div>
-            <div className="flex gap-8 overflow-hidden">
+            <div className="flex flex-col gap-8 overflow-hidden sm:flex-row">
             
             <WithAnimation classnames={`flex flex-col flex-1 gap-6`} animationName={'active'}>
                 <div className="flex flex-col flex-1 gap-6 l-slide">
-                <div className="flex p-2">
+                <div className="flex p-2 items-center">
                     <FaUser size={40}></FaUser>
-                    <h2 className="ml-2 flex items-end border-b-2">
+                    <h2 className="ml-2 flex items-end border-b-2 lg:text-5xl">
                         About me
                     </h2>
                 </div>
@@ -37,7 +37,7 @@ export default function AboutSection () {
             
             </WithAnimation>
             <WithAnimation classnames={`flex-1`} animationName={'active'}>
-                <div className="r-slide flex-1">
+                <div className="ff flex-1">
                 <div className="grid grid-cols-3 gap-4 gc">
                 <div>
                 <IoLogoJavascript size={iconSizes}></IoLogoJavascript>

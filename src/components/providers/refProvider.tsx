@@ -4,8 +4,8 @@ import { createContext, LegacyRef, RefObject, useContext, useRef } from "react";
 
 type SectionRefs = {
     aboutRef:RefObject<HTMLDivElement>,
-    projectRef:RefObject<HTMLElement>,
-    contactRef:RefObject<HTMLElement>
+    projectRef:RefObject<HTMLDivElement>,
+    contactRef:RefObject<HTMLDivElement>
 }
 
 type RefContextType = Partial<SectionRefs>

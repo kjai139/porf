@@ -6,12 +6,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+interface scrollIntoViewProps {
+  ref:RefObject<HTMLDivElement>,
+  start?: 'start' | 'center' | 'end' | 'nearest'
+}
 
-export function scrollIntoView(ref:RefObject<HTMLDivElement>) {
+
+export function scrollIntoView({ref, start}:scrollIntoViewProps) {
   if (ref.current) {
     ref.current.scrollIntoView({
       behavior:'smooth',
-      block:'center',
+      block: start ? start : 'center',
     })
   } else {
     console.error('REF dOES NOT EXIST')
