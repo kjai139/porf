@@ -10,7 +10,7 @@ export default function AboutBtn () {
 
     return (
         <div>
-            <Button className="text-xl" variant={'link'} onClick={() => scrollIntoView({ref: aboutRef})}>
+            <Button  className="nav-btn text-xl text-foreground" variant={'link'} onClick={() => scrollIntoView({ref: aboutRef})}>
                 ABOUT
             </Button>
         </div>

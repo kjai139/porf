@@ -82,7 +82,7 @@ export function MailerForm() {
 
     return (
         <Form {...form}>
-            <form className={`sm:min-w-[500px] min-w-[300px] max-w-[500px] flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded`} onSubmit={form.handleSubmit(onSubmit)}>
+            <form className={`sm:min-w-[500px] min-w-[300px] max-w-[500px] w-full flex flex-col gap-4 px-4 py-8 bg-navBg shadow rounded`} onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                 control={form.control}
                 name="senderName"

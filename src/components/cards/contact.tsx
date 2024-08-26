@@ -1,14 +1,16 @@
 import { MailerForm } from "../forms/mailerForm";
 import { MdContactMail } from "react-icons/md";
+import ContactRef from "../ref/contactRef";
 
 export default function ContactSection() {
 
     return (
         <div className="min-h-screen w-full flex flex-col gap-20 mw">
+            <ContactRef></ContactRef>
             <div className="flex justify-center flex-col sm:items-center">
-                <div className="flex gap-4">
+                <div className="flex gap-4 mb-8 items-center">
                 <MdContactMail size={40}></MdContactMail>
-                <h2 className="text-4xl underline mb-8">
+                <h2 className="lg:text-5xl underline">
                     Contact
                 </h2>
                 </div>

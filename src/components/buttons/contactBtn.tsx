@@ -10,7 +10,7 @@ export default function ContactBtn () {
 
     return (
         <div>
-            <Button className="text-xl" variant={'link'} onClick={() => scrollIntoView({ref:contactRef, start:'start'})}>
+            <Button className="text-xl nav-btn text-foreground" variant={'link'} onClick={() => scrollIntoView({ref:contactRef, start:'start'})}>
                 CONTACT
             </Button>
         </div>

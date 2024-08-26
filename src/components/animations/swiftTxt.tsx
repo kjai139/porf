@@ -1,4 +1,5 @@
 
+import LearnMoreBtn from "../buttons/learnMoreBtn"
 
 interface SwiftTextProps {
     txt : {
@@ -9,15 +10,18 @@ interface SwiftTextProps {
 
 export default function SwiftText({txt}:SwiftTextProps) {
 
+    
+
     return (
         <div className="flex flex-col items-center gap-4">
             {
                 txt.map((line, lineIdx) => {
                     const wordsArr = line.msg.split(' ')
                     return (
-                        <div className="flex" key={`line-${lineIdx}`}>
+                        <div className="flex flex-wrap items-center justify-center" key={`line-${lineIdx}`}>
                         {
                             wordsArr.map((word, idx) => {
+
                                 return (
                                     <span className={`al ${word === 'Simon' ? 'text-primary' : ''}`} key={`word-${idx}`}>
                                         <div style={{
@@ -34,6 +38,13 @@ export default function SwiftText({txt}:SwiftTextProps) {
                     )
                 })
             }
+            <div className="al">
+            <div style={{
+                animationDelay: `3s`
+            }}>
+                    <LearnMoreBtn></LearnMoreBtn>
+            </div>
+            </div>
             
         </div>
     )

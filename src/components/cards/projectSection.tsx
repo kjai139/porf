@@ -20,7 +20,7 @@ export default function ProjectSection () {
             <div className="flex gap-10 flex-col-reverse sm:flex-row">
                 <div className="flex">
                 <article>
-                <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={500} style={{
+                <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={0} style={{
                     width: '300px',
                     height:'auto'
                 }}>

@@ -7,7 +7,7 @@ export default function ContactRef () {
     const { contactRef } = useRefs()
 
     return (
-        <div ref={contactRef}>
+        <div id="cRef" ref={contactRef}>
 
         </div>
     )
