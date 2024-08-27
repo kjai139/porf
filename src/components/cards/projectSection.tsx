@@ -19,7 +19,7 @@ export default function ProjectSection () {
             </div>
             <div className="flex gap-10 flex-col-reverse sm:flex-row">
                 
-                <div className="flex">
+                <div className="flex flex-1">
                 <article>
                 <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={0} style={{
                     width: '300px',
@@ -45,7 +45,7 @@ export default function ProjectSection () {
 
             </div>
             <div className="flex gap-10 flex-col sm:flex-row mt-4">
-                <div className="flex gap-4 flex-col proj-t">
+                <div className="flex gap-4 flex-col proj-t flex-1">
                     <h2 className="text-2xl font-semibold">Instant web messenger</h2>
                     <span className="text-lg">
                         A chat messenger app that allows users to communicate in real time - Built with React, Express, Socket.io, MongoDB, JWT, and vanilla CSS
