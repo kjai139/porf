@@ -56,7 +56,7 @@ export default function TopNav () {
     
 
     return (
-        <nav className="flex w-full justify-between p-6 shadow text-foreground bg-navBg z-50 top-0 sticky">
+        <nav className="flex w-full justify-between p-4 shadow text-foreground bg-navBg z-50 top-0 sticky">
             <div>
                 {
                     !isDesktop ?
