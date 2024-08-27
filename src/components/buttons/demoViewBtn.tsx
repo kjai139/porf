@@ -26,7 +26,7 @@ export default function DemoViewBtns () {
                     <AlertDialogHeader>
                     <AlertDialogTitle>Notice</AlertDialogTitle>
                     <AlertDialogDescription>
-                        Demo for this is not available for some reason, please contact me for more details.
+                        The demo for this is not available for some reason, please contact me for more details.
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
