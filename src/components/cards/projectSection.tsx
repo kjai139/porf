@@ -12,7 +12,7 @@ export default function ProjectSection () {
     return (
         <div className="relative min-h-screen w-full flex flex-col gap-16 mw">
             <ProjectRef></ProjectRef>
-            <div className="flex ah ml-4">
+            <div className="flex ah ml-4 items-center">
                 
                 <FaProjectDiagram size={40}></FaProjectDiagram>
                 <h2 className="ml-2 flex items-end border-b-2 lg:text-5xl">
