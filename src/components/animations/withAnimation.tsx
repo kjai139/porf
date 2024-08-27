@@ -3,8 +3,14 @@
 import { useEffect, useRef } from "react"
 
 
-export default function WithAnimation({children, classnames, animationName}) {
-    const ref = useRef(null)
+interface WithAnimationProps {
+    children: React.ReactNode,
+    classnames: string,
+    animationName: string
+}
+
+export default function WithAnimation({children, classnames, animationName}:WithAnimationProps) {
+    const ref = useRef<HTMLDivElement | null>(null)
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -12,9 +18,9 @@ export default function WithAnimation({children, classnames, animationName}) {
                 console.log('IntersectionRatio:', entry.intersectionRatio)
                 console.log('Is intersecting:', entry.isIntersecting)
                 console.log(ref.current)
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && ref.current) {
                     ref.current.children[0].classList.add(animationName)
-                } else {
+                } else if (!entry.isIntersecting && ref.current) {
                     ref.current.children[0].classList.remove(animationName)
                 } 
             },

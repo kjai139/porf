@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 
 import { useEffect, useRef } from "react"
 
@@ -23,7 +23,7 @@ export default function ParticleBg () {
             
         }
 
-        update(canvasRef) {
+        update(canvasRef:any) {
             this.x += this.speedX
             this.y += this.speedY
             if (this.size > 0.2)  {
@@ -36,7 +36,7 @@ export default function ParticleBg () {
             
         }
 
-        draw(ctx) {
+        draw(ctx:any) {
             ctx.beginPath()
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
             ctx.fillStyle = `rgba(255, 255, 255, 0.8)`
@@ -101,4 +101,4 @@ export default function ParticleBg () {
 
         </canvas>
     )
-}
+} */

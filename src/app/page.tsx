@@ -1,4 +1,4 @@
-import ParticleBg from "@/components/backgrounds/ParticlesBg";
+
 import AboutSection from "@/components/cards/aboutSection";
 import ContactSection from "@/components/cards/contact";
 import ProjectSection from "@/components/cards/projectSection";
