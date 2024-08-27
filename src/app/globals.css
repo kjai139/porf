@@ -284,6 +284,12 @@ h2 {
   }
 }
 
+@media(max-width: 600px) {
+  .tilt-l {
+    transform: rotate(0);
+  }
+}
+
 
 @media (min-width: 768px) {
   .burger {

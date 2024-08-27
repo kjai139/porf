@@ -71,7 +71,7 @@ export default function ProjectSection () {
                 <div className="flex-1 proj-t gap-4 flex flex-col">
                     <h2 className="text-2xl font-semibold">E-commerce platform</h2>
                     <span className="text-lg">
-                        An online store that sells users products or services which are purchasable with the website's currency - Built with Next JS, MongoDB, AuthJs and Stripe.Js
+                    An online store that sells products or services to users, which can be purchased with the website's currency obtained through real money transactions - Built with Next JS, MongoDB, AuthJs and Stripe.Js
                     </span>
                     <DemoViewBtns></DemoViewBtns>
                 </div>
