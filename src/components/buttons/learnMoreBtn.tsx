@@ -9,6 +9,6 @@ export default function LearnMoreBtn () {
     const { aboutRef } = useRefs()
 
     return (
-        <Button onClick={() => scrollIntoView({ref:aboutRef})} id="v-btn" className="shadow-sm text-lg text-foreground bg-primary" size={'lg'} variant={"default"}><span className="font-semibold"><span className="flex items-center gap-2">Learn More<FaArrowDown></FaArrowDown></span></span> </Button>
+        <Button onClick={() => scrollIntoView({ref:aboutRef!})} id="v-btn" className="shadow-sm sm:text-lg text-foreground bg-primary" size={'lg'} variant={"default"}><span className="font-semibold"><span className="flex items-center gap-2">Learn More<FaArrowDown></FaArrowDown></span></span> </Button>
     )
 }

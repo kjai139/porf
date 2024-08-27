@@ -38,7 +38,7 @@ export default function SwiftText({txt}:SwiftTextProps) {
                     )
                 })
             }
-            <div className="al">
+            <div className="al mt-6">
             <div style={{
                 animationDelay: `3s`
             }}>

@@ -7,7 +7,7 @@ export default function ProjectSection () {
 
     
     return (
-        <div className="min-h-screen w-full flex flex-col gap-16 mw">
+        <div className="relative min-h-screen w-full flex flex-col gap-16 mw">
             <ProjectRef></ProjectRef>
             <div className="flex ah ml-4">
                 
@@ -18,6 +18,7 @@ export default function ProjectSection () {
                 
             </div>
             <div className="flex gap-10 flex-col-reverse sm:flex-row">
+                
                 <div className="flex">
                 <article>
                 <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={0} style={{
@@ -36,16 +37,16 @@ export default function ProjectSection () {
                 <div className="flex-1 p-4 gap-4 flex flex-col proj-t">
                     <h2 className="text-2xl font-semibold">Web comics website</h2>
                     <span className="text-lg">
-                        Fully scalable and mobile responsive web comics website with a custom CMS - Built with Next JS, MongoDB, AWS S3, NextUI, AuthJS
+                        A fully scalable and mobile responsive web comics website with a custom CMS - Built with Next JS, MongoDB, AWS S3, NextUI, AuthJS
                     </span>
                 </div>
 
             </div>
-            <div className="flex gap-10 flex-col sm:flex-row">
+            <div className="flex gap-10 flex-col sm:flex-row mt-4">
                 <div className="flex gap-4 flex-col proj-t">
-                    <h2 className="text-2xl font-semibold">Bootleg Discord</h2>
+                    <h2 className="text-2xl font-semibold">Instant web messenger</h2>
                     <span className="text-lg">
-                        A chat messenger app built with React, Express, Socket.io, MongoDB, JWT, and vanilla CSS
+                        A chat messenger app that allows users to communicate in real time - Built with React, Express, Socket.io, MongoDB, JWT, and vanilla CSS
                     </span>
                 </div>
                 <article className="p-4">
@@ -53,7 +54,7 @@ export default function ProjectSection () {
                 </article>
 
             </div>
-            <div className="flex gap-10 flex-col-reverse sm:flex-row">
+            <div className="flex gap-10 flex-col-reverse sm:flex-row mt-4">
             <article>
                 <Image src={'/ecom.png'} alt="website screenshot" width={500} height={500} style={{
                     minWidth: '200px',
@@ -61,9 +62,9 @@ export default function ProjectSection () {
                 }}></Image>
                 </article>
                 <div className="flex-1 proj-t gap-4 flex flex-col">
-                    <h2 className="text-2xl font-semibold">Coins Shop</h2>
+                    <h2 className="text-2xl font-semibold">E-commerce platform</h2>
                     <span className="text-lg">
-                        An E-commerce website that sells user coins - Built with Next JS, MongoDB, AuthJs and Stripe.Js
+                        An online store that sells user products or services which are purchasable with the website's currency - Built with Next JS, MongoDB, AuthJs and Stripe.Js
                     </span>
                 </div>
             </div>

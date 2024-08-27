@@ -16,7 +16,7 @@ export default function HeroSection () {
     return (
         <div>
             <div className="flex flex-col h-screen w-full justify-center items-center gap-10">
-                <div className="text-5xl">
+                <div className="text-2xl sm:text-5xl">
                     <SwiftText txt={txt}></SwiftText>
 
                 </div>

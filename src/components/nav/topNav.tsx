@@ -5,7 +5,7 @@ import ContactBtn from "../buttons/contactBtn"
 import ProjectBtn from "../buttons/projectsBtn"
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Drawer, DrawerContent, DrawerTrigger, DrawerTitle, DrawerDescription, DrawerHeader, DrawerClose } from "../ui/drawer"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "../ui/button"
 import { useRefs } from "../providers/refProvider"
 import { scrollIntoView } from "@/lib/utils"
@@ -15,13 +15,52 @@ export default function TopNav () {
     const isDesktop = useMediaQuery("(min-width: 768px)")
     const iconSize = 30
     const navDelay = 500
+    const [activeBtn, setActiveBtn] = useState('')
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveBtn(entry.target.id)
+                        console.log('NEW ACTIVE', entry.target.id)
+                    } else {
+                        setActiveBtn('')
+                    }
+                })
+            }, {
+                root: null,
+                rootMargin: '0px 0px 0px 0px',
+                threshold: 0.3,
+            }
+        )
+
+        const sectionRefs = [
+            aboutRef, projectRef, contactRef
+        ]
+
+        sectionRefs.forEach((ref) => {
+            if (ref && ref.current) {
+                observer.observe(ref.current)
+            }
+        })
+
+        return () => {
+            sectionRefs.forEach((ref) => {
+                if (ref && ref.current) {
+                    observer.unobserve(ref.current)
+                }
+            })
+        }
+    }, [])
     
 
     return (
         <nav className="flex w-full justify-between p-6 shadow text-foreground bg-navBg z-50 top-0 sticky">
             <div>
                 {
-                    !isDesktop ? 
+                    !isDesktop ?
+                    <div className="burger"> 
                     <Drawer direction="right">
                         <DrawerTrigger title="hamburger menu" aria-description="hamburger menu">
                             <RxHamburgerMenu size={iconSize}></RxHamburgerMenu>
@@ -34,9 +73,9 @@ export default function TopNav () {
                             <ul className="flex flex-col justify-center items-center">
                                 <li>
                                     <DrawerClose asChild>
-                                    <Button className="text-xl text-foreground nav-btn" variant={'link'} onClick={ () => {
+                                    <Button className={`text-xl text-foreground nav-btn`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: aboutRef });
+                                            scrollIntoView({ ref: aboutRef! });
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         ABOUT
@@ -46,9 +85,9 @@ export default function TopNav () {
                                 </li>
                                 <li>
                                 <DrawerClose asChild>
-                                    <Button className="text-xl text-foreground nav-btn" variant={'link'} onClick={ () => {
+                                    <Button className={`text-xl text-foreground nav-btn ${activeBtn === 'pRef' ? 'hl' : null}`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: projectRef, start:'start' });
+                                            scrollIntoView({ ref: projectRef!, start:'start' });
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         PROJECTS
@@ -57,9 +96,9 @@ export default function TopNav () {
                                 </li>
                                 <li>
                                 <DrawerClose asChild>
-                                    <Button className="text-xl text-foreground nav-btn" variant={'link'} onClick={ () => {
+                                    <Button className={`text-xl text-foreground nav-btn ${activeBtn === 'cRef' ? 'hl' : null}`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: contactRef, start: 'start' });
+                                            scrollIntoView({ ref: contactRef!, start: 'start' });
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         CONTACT
@@ -69,15 +108,16 @@ export default function TopNav () {
                             </ul>
                         </DrawerContent>
                     </Drawer>
+                    </div>
                      : null
 
                 }
                 
             </div>
            { isDesktop ? <div className="flex gap-4 text-xl">
-                <AboutBtn></AboutBtn>
-                <ProjectBtn></ProjectBtn>
-                <ContactBtn></ContactBtn>
+                <AboutBtn hl={activeBtn === 'aRef' ? true : false}></AboutBtn>
+                <ProjectBtn hl={activeBtn === 'pRef' ? true : false}></ProjectBtn>
+                <ContactBtn hl={activeBtn === 'cRef' ? true : false}></ContactBtn>
             </div> : null }
         </nav>
     )

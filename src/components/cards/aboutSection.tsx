@@ -1,6 +1,6 @@
 
 import { DiNodejs } from "react-icons/di";
-import { FaCss3Alt, FaGitAlt, FaHtml5, FaReact, FaUser } from "react-icons/fa";
+import { FaCss3Alt, FaDocker, FaGitAlt, FaHtml5, FaReact, FaUser } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiAmazons3, SiExpress, SiTypescript } from "react-icons/si";
@@ -12,11 +12,62 @@ import AboutRef from "../ref/aboutRef";
 
 export default function AboutSection () {
     const iconSizes = 40
+
+    const skills = [
+        {
+            image:<IoLogoJavascript size={iconSizes}></IoLogoJavascript>,
+            name:'Javascript'
+        },
+        {
+            image:<DiNodejs size={iconSizes}></DiNodejs>,
+            name:'Node.js'
+        },
+        {
+            image:<RiNextjsFill size={iconSizes}></RiNextjsFill>,
+            name:'Next.js'
+        },
+        {
+            image:<SiTypescript size={iconSizes}></SiTypescript>,
+            name:'Typescript'
+        },
+        {
+            image: <FaHtml5 size={iconSizes}></FaHtml5>,
+            name:'HTML'
+        },
+        {
+            image:<FaCss3Alt size={iconSizes}></FaCss3Alt>,
+            name:'CSS'
+        },
+        {
+            image:<TbBrandMongodb size={iconSizes}></TbBrandMongodb>,
+            name:'MongoDB'
+        },
+        {
+            image:<SiAmazons3 size={iconSizes}></SiAmazons3>,
+            name:'Amazon S3'
+        },
+        {
+            image:<SiExpress size={iconSizes}></SiExpress>,
+            name:'Express.js'
+        },
+        {
+            image:<FaGitAlt size={iconSizes}></FaGitAlt>,
+            name:'Git'
+        },
+        {
+            image:<FaReact size={iconSizes}></FaReact>,
+            name:'React.js'
+        },
+        {
+            image:<FaDocker size={iconSizes}></FaDocker>,
+            name:'Docker'
+        }
+    ]
   
 
     return (
-        <div className="w-full flex mw items-center justify-center min-h-[75vh]">
-            <AboutRef></AboutRef>
+        <div className="relative w-full flex mw items-center justify-center min-h-[75vh]">
+            <AboutRef />
             <div>
             <div className="flex flex-col gap-8 overflow-hidden sm:flex-row">
             
@@ -30,7 +81,7 @@ export default function AboutSection () {
                 </div>
                 <div className="text-lg">
                     <p>
-                    I am a passionate and driven web developer with a strong focus on JavaScript. Over the past few years, I've honed my skills in creating dynamic and responsive web applications, leveraging frameworks like React.js and Next.js to deliver high-quality, user-friendly experiences.
+                    I am a passionate and self-driven web developer with a strong focus on JavaScript. Over the past few years, I've honed my skills in creating dynamic, scalable, and responsive websites and applications, leveraging react-based frameworks like Next.js to deliver high-quality, user-friendly experiences.
                     </p>
                 </div>
                 </div>
@@ -39,50 +90,16 @@ export default function AboutSection () {
             <WithAnimation classnames={`flex-1`} animationName={'active'}>
                 <div className="ff flex-1">
                 <div className="grid grid-cols-3 gap-4 gc">
-                <div>
-                <IoLogoJavascript size={iconSizes}></IoLogoJavascript>
-                <span>JavaScript</span>
-                </div>
-                <div>
-                <DiNodejs size={iconSizes}></DiNodejs>
-                <span>Node JS</span>
-                </div>
-                <div>
-                <RiNextjsFill size={iconSizes}></RiNextjsFill>
-                <span>Next.js</span>
-                </div>
-                <div>
-                <SiTypescript size={iconSizes}></SiTypescript>
-                <span>Typescript</span>
-                </div>
-                <div>
-                    <FaHtml5 size={iconSizes}></FaHtml5>
-                    <span>Html</span>
-                </div>
-                <div>
-                <FaCss3Alt size={iconSizes}></FaCss3Alt>
-                <span>Css</span>
-                </div>
-                <div>
-                <TbBrandMongodb size={iconSizes}></TbBrandMongodb>
-                <span>MongoDB</span>
-                </div>
-                <div>
-                <SiAmazons3 size={iconSizes}></SiAmazons3>
-                <span>Amazon S3</span>
-                </div>
-                <div>
-                <SiExpress size={iconSizes}></SiExpress>
-                <span>Express JS</span>
-                </div>
-                <div>
-                <FaGitAlt size={iconSizes}></FaGitAlt>
-                <span>Git</span>
-                </div>
-                <div>
-                <FaReact size={iconSizes}></FaReact>
-                <span>React</span>
-                </div>
+                    {
+                        skills.map((node, idx) => {
+                            return (
+                                <div key={`sk-${idx}`}>
+                                    {node.image}
+                                    <span className="text-sm sm:text-md">{node.name}</span>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
                 </div>
 
@@ -90,6 +107,7 @@ export default function AboutSection () {
             </WithAnimation>
             </div>
             </div>
+            
         </div>
     )
 }

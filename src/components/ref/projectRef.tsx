@@ -7,7 +7,7 @@ export default function ProjectRef () {
     const { projectRef } = useRefs()
 
     return (
-        <div id="pRef" ref={projectRef}>
+        <div id="pRef" className="absolute h-full w-full" ref={projectRef}>
 
         </div>
     )
