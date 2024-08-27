@@ -200,7 +200,16 @@ h2 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  article > img, .proj-t {
+  article > img {
+    scale: .8;
+    opacity: 0;
+    animation:fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: entry;
+  
+  }
+
+  .proj-t {
     scale: .8;
     opacity: 0;
     animation:fade-in linear forwards;

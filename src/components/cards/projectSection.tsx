@@ -34,11 +34,13 @@ export default function ProjectSection () {
                 }}></Image>
                 </article>
                 </div>
-                <div className="flex-1 p-4 gap-4 flex flex-col proj-t">
+                <div className="flex-1 p-4 flex flex-col">
+                    <div className="proj-t gap-4 flex flex-col">
                     <h2 className="text-2xl font-semibold">Web comics website</h2>
                     <span className="text-lg">
                         A fully scalable and mobile responsive web comics website with a custom CMS - Built with Next JS, MongoDB, AWS S3, NextUI, AuthJS
                     </span>
+                    </div>
                 </div>
 
             </div>
