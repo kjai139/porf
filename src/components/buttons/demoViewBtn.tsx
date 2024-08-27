@@ -20,7 +20,7 @@ export default function DemoViewBtns () {
         <div className="flex gap-4 mt-4">
             <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button variant={buttonStyle}>View demo</Button>
+                <Button className="font-semibold" variant={buttonStyle}>View demo</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
@@ -38,7 +38,7 @@ export default function DemoViewBtns () {
 
                 <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button variant={buttonStyle}>View code</Button>
+                <Button className="font-semibold" variant={buttonStyle}>View code</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
