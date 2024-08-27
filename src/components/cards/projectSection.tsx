@@ -1,10 +1,13 @@
 import Image from "next/image"
 import { FaProjectDiagram } from "react-icons/fa"
 import ProjectRef from "../ref/projectRef"
+import { Button } from "../ui/button"
+import DemoViewBtns from "../buttons/demoViewBtn"
 
 
 export default function ProjectSection () {
 
+    const buttonStyle = 'default'
     
     return (
         <div className="relative min-h-screen w-full flex flex-col gap-16 mw">
@@ -40,6 +43,7 @@ export default function ProjectSection () {
                     <span className="text-lg">
                         A fully scalable and mobile responsive web comics website with a custom CMS - Built with Next JS, MongoDB, AWS S3, NextUI, AuthJS
                     </span>
+                    <DemoViewBtns></DemoViewBtns>
                     </div>
                 </div>
 
@@ -50,6 +54,7 @@ export default function ProjectSection () {
                     <span className="text-lg">
                         A chat messenger app that allows users to communicate in real time - Built with React, Express, Socket.io, MongoDB, JWT, and vanilla CSS
                     </span>
+                    <DemoViewBtns></DemoViewBtns>
                 </div>
                 <article className="p-4">
                 <Image src={'/chatapp.png'} alt="chat app screenshot" width={500} height={500}></Image>
@@ -68,6 +73,7 @@ export default function ProjectSection () {
                     <span className="text-lg">
                         An online store that sells user products or services which are purchasable with the website's currency - Built with Next JS, MongoDB, AuthJs and Stripe.Js
                     </span>
+                    <DemoViewBtns></DemoViewBtns>
                 </div>
             </div>
         </div>
