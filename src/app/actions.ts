@@ -30,17 +30,19 @@ export async function sendEmail(values:ContactFormType) {
         
 
         const transporter = nodemailer.createTransport({
-            service: 'hotmail',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
             auth: {
-                user: process.env.nodemailerEmail,
-                pass: process.env.nodemailerPw
-            }
+                user: process.env.nodeGmailEmail,
+                pass: process.env.nodeGmailPw
+            },
         })
 
 
         const mailOptions = {
-            from: process.env.nodemailerEmail,
-            to: process.env.nodemailerEmail,
+            from: process.env.nodeGmailEmail,
+            to: process.env.nodeGmailEmail,
             subject: `New message from portf website - from ${values.senderName}, ${values.senderEmail}`,
             text: values.senderMessage,
         }
@@ -50,7 +52,8 @@ export async function sendEmail(values:ContactFormType) {
             console.log('Email sent: ', info)
             return 'success'
         } catch (err) {
-            throw new Error('A server error has occured. Please try again later.')
+            console.log(err)
+            throw new Error('A server error has occured')
         }
     }
     
