@@ -15,47 +15,48 @@ const ratelimit = new Ratelimit({
 })
 
 export async function sendEmail(values:ContactFormType) {
-    console.log('Sa values -', values)
-
-    const ip = headers().get('x-forwarded-for')
-    if (!ip) {
-        throw new Error('Ip missing')
-    }
-    const { success, reset, limit, remaining } = await ratelimit.limit(ip)
-    if (!success) {
-        throw new Error('Error: Exceeded message limit. Please wait a minute before trying again.')
-    } else {
-        console.log('IP from SA - ', ip)
-        console.log('REMAINING:', remaining, 'LIMIT', limit)
-        
-
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.nodeGmailEmail,
-                pass: process.env.nodeGmailPw
-            },
-        })
-
-
-        const mailOptions = {
-            from: process.env.nodeGmailEmail,
-            to: process.env.nodeGmailEmail,
-            subject: `New message from portf website - from ${values.senderName}, ${values.senderEmail}`,
-            text: values.senderMessage,
-        }
+    
 
         try {
-            const info = await transporter.sendMail(mailOptions)
-            console.log('Email sent: ', info)
-            return 'success'
-        } catch (err) {
+            console.log('Sa values -', values)
+
+        const ip = headers().get('x-forwarded-for')
+        if (!ip) {
+            throw new Error('Ip missing')
+        }
+        const { success, reset, limit, remaining } = await ratelimit.limit(ip)
+        if (!success) {
+            throw new Error('Error: Exceeded message limit. Please wait a minute before trying again.')
+        } else {
+            console.log('IP from SA - ', ip)
+            console.log('REMAINING:', remaining, 'LIMIT', limit)
+            
+
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false,
+                auth: {
+                    user: process.env.nodeGmailEmail,
+                    pass: process.env.nodeGmailPw
+                },
+            })
+
+
+            const mailOptions = {
+                from: process.env.nodeGmailEmail,
+                to: process.env.nodeGmailEmail,
+                subject: `New message from portf website - from ${values.senderName}, ${values.senderEmail}`,
+                text: values.senderMessage,
+            }
+                const info = await transporter.sendMail(mailOptions)
+                console.log('Email sent: ', info)
+                return 'success'
+        }} catch (err) {
             console.log(err)
             throw new Error('A server error has occured')
         }
-    }
+    
     
 
 
