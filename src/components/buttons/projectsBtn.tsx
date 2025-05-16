@@ -14,7 +14,7 @@ export default function ProjectBtn ({hl}:NavBtnProps) {
 
     return (
         <div>
-            <Button className={`nav-btn text-xl text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref:projectRef!, start:'start'})}>
+            <Button className={`nav-btn text-xl text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref:projectRef!, position:'start'})}>
                 PROJECTS
             </Button>
         </div>

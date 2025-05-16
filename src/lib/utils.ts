@@ -8,15 +8,15 @@ export function cn(...inputs: ClassValue[]) {
 
 interface scrollIntoViewProps {
   ref:RefObject<HTMLDivElement>,
-  start?: 'start' | 'center' | 'end' | 'nearest'
+  position: 'start' | 'center' | 'end' | 'nearest'
 }
 
 
-export function scrollIntoView({ref, start}:scrollIntoViewProps) {
+export function scrollIntoView({ref, position}:scrollIntoViewProps) {
   if (ref.current) {
     ref.current.scrollIntoView({
       behavior:'smooth',
-      block: start ? start : 'center',
+      block: position,
     })
   } else {
     console.error('REF dOES NOT EXIST')

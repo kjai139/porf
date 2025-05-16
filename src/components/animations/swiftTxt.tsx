@@ -13,7 +13,7 @@ export default function SwiftText({txt}:SwiftTextProps) {
     
 
     return (
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 p-4 h-screen justify-center">
             {
                 txt.map((line, lineIdx) => {
                     const wordsArr = line.msg.split(' ')

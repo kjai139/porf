@@ -11,7 +11,7 @@ export default function AboutBtn ({hl}:NavBtnProps) {
 
     return (
         <div>
-            <Button  className={`nav-btn text-xl text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref: aboutRef!})}>
+            <Button  className={`nav-btn text-xl text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref: aboutRef!, position: 'start'})}>
                 ABOUT
             </Button>
         </div>

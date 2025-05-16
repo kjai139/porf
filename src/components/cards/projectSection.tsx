@@ -24,10 +24,7 @@ export default function ProjectSection () {
                 
                 <div className="flex flex-1">
                 <article>
-                <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={0} style={{
-                    width: '300px',
-                    height:'auto'
-                }}>
+                <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={800}>
                 </Image>
                 
                 </article>
@@ -63,15 +60,15 @@ export default function ProjectSection () {
             </div>
             <div className="flex gap-10 flex-col-reverse sm:flex-row mt-4">
             <article>
-                <Image src={'/ecom.png'} alt="website screenshot" width={500} height={500} style={{
+                <Image src={'/meteor.png'} alt="website screenshot" width={500} height={500} style={{
                     minWidth: '200px',
                     height:'auto'
                 }}></Image>
                 </article>
                 <div className="flex-1 proj-t gap-4 flex flex-col">
-                    <h2 className="text-2xl font-semibold">E-commerce platform</h2>
+                    <h2 className="text-2xl font-semibold">AI Translation Web App</h2>
                     <span className="text-lg">
-                    An online store that sells products or services to users, which can be purchased with the website's currency obtained through real money transactions - Built with Next JS, MongoDB, AuthJs and Stripe.Js
+                    A translation tool built with Next JS, AuthJS, Lambda & SQS S3, payment with Stripe, Tailwind CSS and Shadcn
                     </span>
                     <DemoViewBtns></DemoViewBtns>
                 </div>

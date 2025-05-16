@@ -75,7 +75,7 @@ export default function TopNav () {
                                     <DrawerClose asChild>
                                     <Button className={`text-xl text-foreground nav-btn`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: aboutRef! });
+                                            scrollIntoView({ ref: aboutRef!, position: 'start' });
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         ABOUT
@@ -87,7 +87,7 @@ export default function TopNav () {
                                 <DrawerClose asChild>
                                     <Button className={`text-xl text-foreground nav-btn ${activeBtn === 'pRef' ? 'hl' : null}`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: projectRef!, start:'start' });
+                                            scrollIntoView({ ref: projectRef!, position:'start' });
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         PROJECTS
@@ -98,7 +98,10 @@ export default function TopNav () {
                                 <DrawerClose asChild>
                                     <Button className={`text-xl text-foreground nav-btn ${activeBtn === 'cRef' ? 'hl' : null}`} variant={'link'} onClick={ () => {
                                         setTimeout(() => {
-                                            scrollIntoView({ ref: contactRef!, start: 'start' });
+                                            
+                                                scrollIntoView({ ref: contactRef!, position: 'start' });
+                                            
+                                          
                                           }, navDelay); // Delay (in milliseconds)
                                     }}>
                                         CONTACT

@@ -11,7 +11,7 @@ export default function ContactBtn ({hl}:NavBtnProps) {
 
     return (
         <div>
-            <Button className={`text-xl nav-btn text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref:contactRef!, start:'start'})}>
+            <Button className={`text-xl nav-btn text-foreground ${hl ? 'hl' : undefined}`} variant={'link'} onClick={() => scrollIntoView({ref:contactRef!, position:'start'})}>
                 CONTACT
             </Button>
         </div>
