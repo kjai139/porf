@@ -44,9 +44,10 @@ export function MailerForm() {
     const [isLoading, setIsLoading] = useState(false)
     const [wasSubmitSuccess, setWasSubmitSuccess] = useState(false)
     const [token, setToken] = useState('')
-    const [error, setErrorMsg] = useState('')
+    const [captchaError, setCaptchaErrorMsg] = useState('')
     const recaptchaRef = useRef<ReCAPTCHA>(null)
     const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
+    const [showCaptcha, setShowCaptcha] = useState(false)
 
     useEffect(() => {
         if (wasSubmitSuccess) {
@@ -73,10 +74,18 @@ export function MailerForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
-        if (token) {
-            console.log('captcha passed.', token)
-            return
+        setCaptchaErrorMsg('')
+        if (!token) {
+            if (!showCaptcha) {
+                setShowCaptcha(true)
+            } else {
+                setCaptchaErrorMsg('Please complete the captcha')
+            }
+            
         } else {
+            setShowCaptcha(false)
+            setToken('')
+            console.log('Captcha reset')
             const response = await fetch(`/api/verifyCaptcha`, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -85,9 +94,12 @@ export function MailerForm() {
             })
             if (response.ok) {
                 console.log('recaptcha passed')
+            } else {
+                throw new Error('Captcha Failed.')
             }
-            return
+            
         }
+        return
         setWasSubmitSuccess(false)
         setResultMsg('')
         setServerErrorMsg('')
@@ -194,14 +206,30 @@ export function MailerForm() {
                                 {resultMsg}
                             </span>
                         </div> : null}
-                    <div className="w-full justify-center flex mt-2">
-                    <ReCAPTCHA ref={recaptchaRef} sitekey={recaptchaSiteKey} onChange={(token) => {
-                        if (token) {
-                            setToken(token)
-                        }
-                    }}>
+                        {
+                            captchaError &&
+                            <div className="text-center">
 
-                    </ReCAPTCHA>
+                            <span className="text-destructive">
+                                {captchaError}
+                            </span>
+
+                           
+                        </div>
+
+                        }
+                    <div className="w-full justify-center flex mt-2">
+                        {
+                            showCaptcha &&
+                            <ReCAPTCHA ref={recaptchaRef} sitekey={recaptchaSiteKey} onChange={(token) => {
+                                if (token) {
+                                    setToken(token)
+                                }
+                            }}>
+        
+                            </ReCAPTCHA>
+                        }
+                    
                     </div>
                 </form>
 
