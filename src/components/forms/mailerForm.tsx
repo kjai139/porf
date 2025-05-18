@@ -48,6 +48,7 @@ export function MailerForm() {
     const recaptchaRef = useRef<ReCAPTCHA>(null)
     const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string
     const [showCaptcha, setShowCaptcha] = useState(false)
+    const [formValues, setFormValues] = useState<any>()
 
     useEffect(() => {
         if (wasSubmitSuccess) {
@@ -55,7 +56,7 @@ export function MailerForm() {
         }
     }, [wasSubmitSuccess])
 
-    async function checkCaptchaInvis() {
+    /* async function checkCaptchaInvis() {
         setToken('')
         try {
             const captcha = await recaptchaRef.current?.executeAsync()
@@ -70,11 +71,65 @@ export function MailerForm() {
             console.error('[checkCaptcha] Error ', err)
             throw err
         }
+    } */
+
+    async function handleRecaptchaOnChange (token:string | null) {
+        if (token) {
+            setToken(token)
+            try {
+                const response = await fetch(`/api/verifyCaptcha`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        token: token
+                    })
+                })
+                if (response.ok) {
+                    console.log('recaptcha passed', formValues)
+                    setWasSubmitSuccess(false)
+                    setResultMsg('')
+                    setServerErrorMsg('')
+                    setIsLoading(true)
+                    try {
+                        const response = await sendEmail(formValues)
+                        if (response === 'success') {
+                            setIsLoading(false)
+                            setWasSubmitSuccess(true)
+                            setResultMsg('Message sent.')
+                        } else {
+                            setIsLoading(false)
+                            setServerErrorMsg('An unknown server error has occured.')
+                        }
+                    } catch (err: any) {
+                        if (typeof err === 'string') {
+                            setServerErrorMsg(err)
+                        } else if (err.message) {
+                            setServerErrorMsg(err.message)
+                        } else {
+                            setServerErrorMsg('A server error has occured.')
+                        }
+                        console.error(err)
+                        setIsLoading(false)
+                    }
+                } else {
+                    throw new Error('Captcha Failed.')
+                }
+
+            } catch (err) {
+                console.error('[handlerecaptchaOnChange] error', err)
+            }
+
+        } else {
+            console.log('[handlerecaptchaOnchange], Captcha Failed')
+            setCaptchaErrorMsg('Captcha Failed.')
+
+        }
     }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values)
+        setToken('')
         setCaptchaErrorMsg('')
+        setFormValues(values)
         if (!token) {
             if (!showCaptcha) {
                 setShowCaptcha(true)
@@ -82,25 +137,9 @@ export function MailerForm() {
                 setCaptchaErrorMsg('Please complete the captcha')
             }
             
-        } else {
-            setShowCaptcha(false)
-            setToken('')
-            console.log('Captcha reset')
-            const response = await fetch(`/api/verifyCaptcha`, {
-                method: 'POST',
-                body: JSON.stringify({
-                    token: token
-                })
-            })
-            if (response.ok) {
-                console.log('recaptcha passed')
-            } else {
-                throw new Error('Captcha Failed.')
-            }
-            
-        }
-        return
-        setWasSubmitSuccess(false)
+        } 
+        
+        /* setWasSubmitSuccess(false)
         setResultMsg('')
         setServerErrorMsg('')
         setIsLoading(true)
@@ -124,7 +163,7 @@ export function MailerForm() {
             }
             console.error(err)
             setIsLoading(false)
-        }
+        } */
         /* const result = sendEmail(values)
         console.log(result) */
     }
@@ -221,11 +260,7 @@ export function MailerForm() {
                     <div className="w-full justify-center flex mt-2">
                         {
                             showCaptcha &&
-                            <ReCAPTCHA ref={recaptchaRef} sitekey={recaptchaSiteKey} onChange={(token) => {
-                                if (token) {
-                                    setToken(token)
-                                }
-                            }}>
+                            <ReCAPTCHA ref={recaptchaRef} sitekey={recaptchaSiteKey} onChange={handleRecaptchaOnChange}>
         
                             </ReCAPTCHA>
                         }
