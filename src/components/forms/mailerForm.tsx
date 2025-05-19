@@ -118,7 +118,10 @@ export function MailerForm() {
                         setToken('')
                     }
                 } else {
-                    throw new Error('Captcha Failed.')
+                    console.error('[handleREcaptchaonChange] Error:', response.json())
+                    setCaptchaErrorMsg('Captcha verifcation failed.')
+                    setShowCaptcha(false)
+                    setToken('')
                 }
 
             } catch (err) {
