@@ -95,9 +95,14 @@ export function MailerForm() {
                             setIsLoading(false)
                             setWasSubmitSuccess(true)
                             setResultMsg('Message sent.')
+                            setShowCaptcha(false)
+                            setToken('')
+
                         } else {
                             setIsLoading(false)
                             setServerErrorMsg('An unknown server error has occured.')
+                            setShowCaptcha(false)
+                            setToken('')
                         }
                     } catch (err: any) {
                         if (typeof err === 'string') {
@@ -109,6 +114,8 @@ export function MailerForm() {
                         }
                         console.error(err)
                         setIsLoading(false)
+                        setShowCaptcha(false)
+                        setToken('')
                     }
                 } else {
                     throw new Error('Captcha Failed.')
@@ -121,6 +128,8 @@ export function MailerForm() {
         } else {
             console.log('[handlerecaptchaOnchange], Captcha Failed')
             setCaptchaErrorMsg('Captcha Failed.')
+            setShowCaptcha(false)
+            setToken('')
 
         }
     }
