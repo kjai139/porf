@@ -33,20 +33,19 @@ export async function sendEmail(values:ContactFormType) {
             
 
             const transporter = nodemailer.createTransport({
-                /* host: 'smtp.gmail.com',
+                host: 'smtp.gmail.com',
                 port: 587,
-                secure: false, */
-                service:'hotmail',
+                secure: false,
                 auth: {
-                    user: process.env.nodemailerEmail,
-                    pass: process.env.nodemailerPw
+                    user: process.env.nodeGmailEmail,
+                    pass: process.env.nodeGmailPw
                 },
             })
 
 
             const mailOptions = {
-                from: process.env.nodemailerEmail,
-                to: process.env.nodemailerPw,
+                from: process.env.nodeGmailEmail,
+                to: process.env.nodeGmailEmail,
                 subject: `New message from portf website - from ${values.senderName}, ${values.senderEmail}`,
                 text: values.senderMessage,
             }
