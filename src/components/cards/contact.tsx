@@ -5,7 +5,7 @@ import ContactRef from "../ref/contactRef";
 export default function ContactSection() {
 
     return (
-        <div className="relative w-full flex flex-col gap-20 mw">
+        <div className="relative w-full flex flex-col sm:gap-20 gap-8 mw">
             <ContactRef></ContactRef>
             <div className="flex justify-center flex-col sm:items-center">
                 <div className="flex gap-4 mb-8 items-center">
