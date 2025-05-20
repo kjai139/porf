@@ -199,6 +199,10 @@ h2 {
   }
 }
 
+.p-sec {
+  min-height: 350px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   article > img {
     scale: .8;
