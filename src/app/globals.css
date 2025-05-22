@@ -200,7 +200,7 @@ h2 {
 }
 
 .p-sec {
-  min-height: 350px;
+  max-height: 1000px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -233,7 +233,7 @@ h2 {
 }
 
 #pRef, #cRef, #aRef {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 100px;
 }
 
 .tilt-l {
@@ -299,5 +299,11 @@ h2 {
   .burger {
     opacity: 0;
     pointer-events: none;
+  }
+}
+
+@media (max-width:540px) {
+  .p-sec {
+    max-height:1000px;
   }
 }

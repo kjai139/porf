@@ -20,18 +20,16 @@ export default function ProjectSection() {
                 </h2>
 
             </div>
-            <div className="flex gap-10 flex-col-reverse sm:flex-row">
+            <div className="flex gap-10 flex-col-reverse sm:flex-row p-sec max-h-[1000px] mt-10">
 
                 <div className="flex flex-1">
                     <article>
-                        <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={300} height={800}>
+                        <Image className="shift-u" src={'/fsmobile.png'} alt="website fullscreen screenshot" width={354} height={949}>
                         </Image>
 
                     </article>
                     <article>
-                        <Image className="tilt-l shadow" src={'/website.png'} alt="website screenshot" width={100} height={500} style={{
-                            width: 'auto'
-                        }}></Image>
+                        <Image className="tilt-l shadow" src={'/website.png'} alt="website screenshot" width={306} height={952}></Image>
                     </article>
                 </div>
                 <div className="flex-1 p-4 flex flex-col">
@@ -46,7 +44,7 @@ export default function ProjectSection() {
 
             </div>
             <div className="flex gap-10 flex-col sm:flex-row mt-4 p-sec">
-                <div className="flex-1 p-4 flex flex-col">
+                <div className="flex-1 p-4 flex flex-col justify-end sm:justify-normal">
                     <div className="flex gap-4 flex-col proj-t">
                         <h2 className="text-2xl font-semibold">Instant web messenger</h2>
                         <span className="text-lg">
@@ -57,7 +55,7 @@ export default function ProjectSection() {
                 </div>
                 <div className="flex flex-1">
                 <article className="p-4">
-                    <Image src={'/chatapp.png'} alt="chat app screenshot" width={500} height={500}></Image>
+                    <Image src={'/chatapp.png'} alt="chat app screenshot" width={1035} height={953}></Image>
                 </article>
                 </div>
 
@@ -65,13 +63,10 @@ export default function ProjectSection() {
             <div className="flex gap-10 flex-col-reverse sm:flex-row mt-4 p-sec">
                 <div className="flex flex-1">
                 <article>
-                    <Image src={'/meteor.png'} alt="website screenshot" width={500} height={500} style={{
-                        minWidth: '200px',
-                        height: 'auto'
-                    }}></Image>
+                    <Image src={'/meteor.png'} alt="website screenshot" width={1915} height={951}></Image>
                 </article>
                 </div>
-                <div className="flex-1 p-4 flex flex-col">
+                <div className="flex-1 p-4 flex flex-col justify-end sm:justify-normal">
                 <div className="proj-t gap-4 flex flex-col">
                     <h2 className="text-2xl font-semibold">AI Translation Web App</h2>
                     <span className="text-lg">
