@@ -3,9 +3,10 @@ import { createContext, LegacyRef, RefObject, useContext, useRef } from "react";
 
 
 type SectionRefs = {
-    aboutRef:RefObject<HTMLDivElement>,
-    projectRef:RefObject<HTMLDivElement>,
-    contactRef:RefObject<HTMLDivElement>
+    aboutRef:RefObject<HTMLDivElement>;
+    projectRef:RefObject<HTMLDivElement>;
+    contactRef:RefObject<HTMLDivElement>;
+    landingRef:RefObject<HTMLDivElement>;
 }
 
 type RefContextType = Partial<SectionRefs>
@@ -18,7 +19,8 @@ export default function RefProvider ({children}:{
     const sectionRefs = {
         aboutRef: useRef(null),
         projectRef: useRef(null),
-        contactRef: useRef(null)
+        contactRef: useRef(null),
+        landingRef: useRef(null)
     }
 
     return (

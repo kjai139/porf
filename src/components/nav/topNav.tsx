@@ -11,7 +11,7 @@ import { useRefs } from "../providers/refProvider"
 import { scrollIntoView } from "@/lib/utils"
 
 export default function TopNav () {
-    const { aboutRef, projectRef, contactRef } = useRefs()
+    const { aboutRef, projectRef, contactRef, landingRef } = useRefs()
     const isDesktop = useMediaQuery("(min-width: 768px)")
     const iconSize = 30
     const navDelay = 500
@@ -21,22 +21,20 @@ export default function TopNav () {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
+                    if (entry.isIntersecting && activeBtn !== entry.target.id) {
                         setActiveBtn(entry.target.id)
                         console.log('NEW ACTIVE', entry.target.id)
-                    } else {
-                        setActiveBtn('')
                     }
                 })
             }, {
                 root: null,
                 rootMargin: '0px 0px 0px 0px',
-                threshold: 0.3,
+                threshold: 0.5,
             }
         )
 
         const sectionRefs = [
-            aboutRef, projectRef, contactRef
+            aboutRef, projectRef, contactRef, landingRef
         ]
 
         sectionRefs.forEach((ref) => {
